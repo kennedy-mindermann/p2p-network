@@ -1,6 +1,7 @@
 TODO
 - allow server names to be anything
 - check in download folders as well when a server is looking for a file 
+- fix formatting of readme
 
 
 Additional Enhancements
