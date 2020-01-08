@@ -1,3 +1,8 @@
 TODO
 - allow server names to be anything
 - check in download folders as well when a server is looking for a file 
+
+
+Additional Enhancements
+- clean up code, make it more efficient 
+- remove duplicates and make them into their own methods 
