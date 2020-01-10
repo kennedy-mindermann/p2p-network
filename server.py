@@ -231,7 +231,7 @@ def createClientSocket(my_port, ref_port_num, my_id):
         it will connect with the server at that port instead.'''
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    sock.bind(('127.0.0', my_port))
+    sock.bind((localhost, my_port))
     sock.connect((localhost, ref_port_num))
     sock.send(my_id.encode())
 
@@ -244,7 +244,7 @@ def createClientSocket(my_port, ref_port_num, my_id):
     while (int(port_num) != my_port and int(port_num) != int(ref_port_num)):
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        sock.bind(('127.0.0', my_port))
+        sock.bind((localhost, my_port))
         sock.connect((localhost, int(port_num)))
         sock.send(my_id.encode())
         response_msg = sock.recv(1024).decode()
