@@ -26,6 +26,7 @@ class MetadataServer(object):
         self.sock.listen(5)
         while True:
             server, ip_addr = self.sock.accept()
+            print("accepted new connection", ip_addr)
             server.settimeout(60)
             server_port = self.port_nums[self.port_nums_index]
             self.port_nums_index += 1
