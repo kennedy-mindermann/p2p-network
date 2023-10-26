@@ -1,9 +1,8 @@
-##Implementing a Peer-to-Peer network
-#####Kennedy Mindermann
-#####minde024
-#####4894713
+## Implementing a Peer-to-Peer network
+##### Kennedy Mindermann
+##### minde024
 
-###There are two main parts to my program:
+### There are two main parts to my program:
 **MetadataServer**:
 The MetatdataServer is implemented as a class using multithreading. I decided on this because there only needs to be one MetadataServer for each peer-to-peer network so using a class makes it simple and efficient to create an instance of the MetatdataServer when need be. Creating it to be multithreaded allows for multiple incoming connections to be handled at the same time.
 On initialization, the MetadataServer creates a new socket, binds
