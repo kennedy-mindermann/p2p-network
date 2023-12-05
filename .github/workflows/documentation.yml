@@ -13,23 +13,25 @@ jobs:
     
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v3
-      
-      - name: Install dependencies
+      - name: select python version
+        uses: actions/setup-python@v3
+        with: 
+          python-version: 3.8    
+      - name: install dependencies
         run: |
-          pip install sphinx sphinx_rtd_theme myst_parser
-          pip install -U sphinx
-      
-      - name: Sphinx build
+          python -m pip install --upgrade pip
+          python -m pip install .
+          python -m pip install sphinx
+          python -m pip install sphinx_rtd_theme
+          python -m pip install sphinx-click
+      - name: build documentation
         run: |
-          cd docs/source
-          sphinx-build docs _build
-      
-      - name: Deploy to GitHub Pages
+          cd docs
+          make html      
+      - name: deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
         with:
-          publish_branch: gh-pages
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: _build/
+          publish_dir: ./docs/_build/html
           force_orphan: true
+          full_commit_message: ${{ github.event.head_commit.message }}
